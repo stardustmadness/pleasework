@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataBay – Sell Your Data Securely</title>
+  <meta name="description" content="DataBay is a secure platform where individuals and companies can sell their consumer, analytics, and IoT data to trusted buyers.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Header & Navigation */
+    header {
+      background-color: #1f1f1f;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #0ff;
+    }
+    nav a {
+      margin: 0 10px;
+      font-size: 1rem;
+      color: #e0e0e0;
+    }
+    nav a:hover {
+      color: #0ff;
+    }
+    /* Main Container */
+    .container {
+      padding: 80px 20px 20px;
+    }
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: url('https://via.placeholder.com/1500x600?text=Cyberpunk+Data+Selling') no-repeat center center/cover;
+      color: #fff;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .cta-buttons button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      background-color: #0ff;
+      color: #121212;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .cta-buttons button:hover {
+      background-color: #0cc;
+    }
+    /* Section Titles */
+    section h2 {
+      text-align: center;
+      color: #0ff;
+      margin-bottom: 20px;
+    }
+    /* Card Grid (Categories & Listings) */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #0ff;
+    }
+    .card p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .card button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #0ff;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background-color: #0cc;
+    }
+    /* Leaderboard */
+    .leaderboard table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .leaderboard th, .leaderboard td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: left;
+    }
+    .leaderboard th {
+      background-color: #1f1f1f;
+      color: #0ff;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1f1f1f;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Navigation -->
+  <header>
+    <h1>DataBay – Sell Your Data</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#Sell Bulk Data as a Business">For Business</a>
+	<a href="#Sell Your Personal Data as an Individual">For Individuals</a>
+      <a href="#sell">Sell Your Data</a>
+      <a href="#leaderboard">Top Buyers</a>
+         </nav>
+  </header>
+
+  <div class="container">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <h2>Sell Your Data Securely</h2>
+      <p>Connect with verified buyers and maximize your data's value.</p>
+      <div class="cta-buttons">
+        <button onclick="scrollToSection('categories')">View Data Categories</button>
+        <button onclick="scrollToSection('sell')">Start Selling</button>
+      </div>
+    </section>
+
+ <!-- Sell Bulk Data as a Business -->
+    <section id="Sell Bulk Data as a Business">
+      <h2>Sell Bulk Data as a Business</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Consumer Demographics</h3>
+          <p>Sell age, gender, income,spending habits and geographic data.</p>
+<p><strong>Price:</strong> Earn up to ₹10 lakh per dataset</p>
+<button onclick="addToCart('Consumer Demographics', 10.00)">Sell Now</button>
+        </div>
+        <div class="card">
+          <h3>Browsing History</h3>
+          <p>Monetize your search history, website visits, social media activity, and user analytics.</p>
+<p><strong>Price:</strong> Earn up to ₹50 lakh per dataset</p>
+<button onclick="addToCart('Browsing History', 10.00)">Sell Now</button>
+        </div>
+        <div class="card">
+          <h3>IoT Sensor Data</h3>
+          <p>Companies seek real-time device activity logs and sensor data.</p>
+<p><strong>Price:</strong>  Earn up to ₹1 crore per dataset</p>
+<button onclick="addToCart('IoT Sensor Data', 10.00)">Sell Now</button>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Sell Your Personal Data as an Individual -->
+    <section id="Sell Your Personal Data as an Individual">
+      <h2>Sell Your Personal Data as an Individual</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Personal Demographics</h3>
+          <p>Sell age, gender, income,education and location.</p>
+	<p><strong>Price:</strong>Earn up to ₹5,000 per dataset</p>
+<button onclick="addToCart('IoT Sensor Data', 10.00)">Sell Now</button>
+        </div>
+        <div class="card">
+          <h3>Browsing History</h3>
+          <p>Monetize detailed online behavior such as website visits, search queries, and app preferences.</p>
+	<p><strong>Price:</strong>Earn up to ₹7,000 per month</p>
+<button onclick="addToCart('Browsing History', 10.00)">Sell Now</button>
+        </div>
+        <div class="card">
+          <h3>Real-Time Location Data</h3>
+          <p>GPS logs, travel history, and movement tracking.</p>
+	<p><strong>Price:</strong>Earn up to ₹15,000 per month</p>
+<button onclick="addToCart('Real-Time Location Data', 10.00)">Sell Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sell Your Data Form -->
+    <section id="sell">
+      <h2>Sell Your Data</h2>
+      <form>
+        <label>Data Type:</label><br>
+        <input type="text" required><br>
+        <label>Size (GB):</label><br>
+        <input type="number" required><br>
+        <label>Price (₹):</label><br>
+        <input type="number" required><br>
+        <button type="submit">Submit Data for Sale</button>
+      </form>
+    </section>
+
+    <!-- Leaderboard -->
+    <section id="leaderboard">
+      <h2>Top Data Buyers</h2>
+      <div class="leaderboard">
+        <table>
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Data Purchased (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Google</td>
+              <td>500 Crore Rupee</td>
+            </tr>
+            <tr>
+              <td>Meta</td>
+              <td>320 Crore Rupees</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 DataBay Sellers Platform. All rights reserved.</p>
+<p>Disclaimer:</p>
+<p>
+This website is strictly for educational and research purposes only. All data, products, and listings presented here are entirely fictional and do not represent real individuals, entities, or transactions. We do not support, promote, or engage in any form of illegal data trading, cybercrime, or unethical activities. Any resemblance to real persons, businesses, or organizations is purely coincidental. Unauthorized use of this content for illegal purposes is strictly prohibited.
+
+Stay ethical. Stay informed.</p>
+  </footer>
+
+  <script>
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

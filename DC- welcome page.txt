@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to DataBay</title>
+  <meta name="description" content="DataBay - The premier marketplace for buying and selling data securely.">
+  <link rel="icon" href="favicon.ico">
+  <style>
+    /* Global Styles */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Split Screen Layout */
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+    }
+    .half {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .half h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .half p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    
+    /* Left Side - Sell Data */
+    .sell {
+      background: url('https://via.placeholder.com/800x800?text=Sell+Your+Data') no-repeat center center/cover;
+      background-color: #0f0f0f;
+    }
+    .sell:hover {
+      background-color: #00ff99;
+      color: #121212;
+    }
+    
+    /* Right Side - Buy Data */
+    .buy {
+      background: url('https://via.placeholder.com/800x800?text=Buy+Data') no-repeat center center/cover;
+      background-color: #1a1a1a;
+    }
+    .buy:hover {
+      background-color: #0099ff;
+      color: #121212;
+    }
+    
+    /* Button Styles */
+    .btn {
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      background-color: #0ff;
+      color: #121212;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background-color: #0cc;
+    }
+    
+    /* Overlay Text Box */
+    .overlay {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Split Container -->
+  <div class="container">
+    <!-- Left Half - Sell Data -->
+    <div class="half sell" onclick="window.location.href='sell.html'">
+      <div class="overlay">
+        <h1>Sell Data</h1>
+        <p>Monetize your consumer, analytics, or IoT data by connecting with trusted buyers.</p>
+        <button class="btn">Go to Sell Page</button>
+      </div>
+    </div>
+
+    <!-- Right Half - Buy Data -->
+    <div class="half buy" onclick="window.location.href='buy.html'">
+      <div class="overlay">
+        <h1>Buy Data</h1>
+        <p>Access high-quality datasets from verified sellers for business intelligence and analytics.</p>
+        <button class="btn">Go to Buy Page</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

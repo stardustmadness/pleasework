@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DataBay – Premier Marketplace for Data Buyers</title>
+  <meta name="description" content="DataBay is a simulated, production-ready marketplace where third-party buyers acquire premium consumer data collected by first-party providers." />
+  <link rel="icon" href="favicon.ico" />
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    /* Header & Navigation */
+    header {
+      background-color: #1f1f1f;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #0ff;
+    }
+    nav a {
+      margin: 0 10px;
+      font-size: 1rem;
+      color: #e0e0e0;
+    }
+    nav a:hover {
+      color: #0ff;
+    }
+    /* Container for Sections */
+    .container {
+      padding: 80px 20px 20px;
+    }
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background: url('https://via.placeholder.com/1500x600?text=Cyberpunk+Marketplace') no-repeat center center/cover;
+      color: #fff;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .cta-buttons button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      background-color: #0ff;
+      color: #121212;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .cta-buttons button:hover {
+      background-color: #0cc;
+    }
+    /* Section Headings */
+    section h2 {
+      text-align: center;
+      color: #0ff;
+      margin-bottom: 20px;
+    }
+    /* Card Grid (Products & Seller Profiles) */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #0ff;
+    }
+    .card p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .card button {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #0ff;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background-color: #0cc;
+    }
+    /* Cart Styles */
+    #cart table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    #cart th, #cart td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: left;
+    }
+    #cart th {
+      background-color: #1f1f1f;
+      color: #0ff;
+    }
+    /* Leaderboard Styles */
+    .leaderboard table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .leaderboard th, .leaderboard td {
+      border: 1px solid #333;
+      padding: 10px;
+      text-align: left;
+    }
+    .leaderboard th {
+      background-color: #1f1f1f;
+      color: #0ff;
+    }
+    /* Contact Form Styles */
+    form input, form textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+      border-radius: 5px;
+      border: 1px solid #333;
+      background-color: #1f1f1f;
+      color: #e0e0e0;
+    }
+    form button {
+      padding: 10px 20px;
+      background-color: #0ff;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #0cc;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1f1f1f;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1001;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .modal-content {
+      background-color: #1f1f1f;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      color: #e0e0e0;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .modal-content button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0ff;
+      color: #121212;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .modal-content button:hover {
+      background-color: #0cc;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Navigation -->
+  <header>
+    <h1>DataBay</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Data Products</a>
+	<a href="#Individuals">Individuals</a>
+      <a href="#cart">Cart</a>
+      <a href="#sellers">Seller Profiles</a>
+      <a href="#leaderboard">Top Providers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <!-- Hero Section (Home) -->
+    <section id="home" class="hero">
+      <h2>DataBay – Premier Marketplace for Data Buyers</h2>
+      <p>Acquire premium consumer data collected by trusted providers.</p>
+      <div class="cta-buttons">
+        <button onclick="scrollToSection('products')">Browse Data Products</button>
+	<button onclick="scrollToSection('Individual Data Profiles')">Browse Individual Data Profiles</button>
+        <button onclick="scrollToSection('cart')">View Cart</button>
+      </div>
+      <div style="margin-top: 30px; font-size: 1.2rem;">
+        <span id="transactionCounter">Data Transactions Completed: 2,345,678</span>
+      </div>
+    </section>
+
+    <!-- Data Products Section -->
+    <section id="products">
+      <h2>Data Products</h2>
+      <div class="card-grid">
+        <!-- Product 1 -->
+        <div class="card">
+          <h3>Consumer Demographics</h3>
+          <p>Detailed profiles including age, gender, income, and location.</p>
+          <p><strong>Price:</strong> ₹17 per profile</p>
+          <p><strong>Source:</strong> Trusted Data Collectors Inc.</p>
+          <button onclick="addToCart('Consumer Demographics', 0.20)">Add to Cart</button>
+        </div>
+        <!-- Product 2 -->
+        <div class="card">
+          <h3>Browsing History</h3>
+          <p>Comprehensive logs of online behavior and website visits.</p>
+          <p><strong>Price:</strong>  ₹42 per profile</p>
+          <p><strong>Source:</strong> WebTrack Analytics</p>
+          <button onclick="addToCart('Browsing History', 0.50)">Add to Cart</button>
+        </div>
+        <!-- Product 3 -->
+        <div class="card">
+          <h3>Location Data</h3>
+          <p>Real-time location tracking data collected from mobile devices.</p>
+          <p><strong>Price:</strong> ₹84 per profile</p>
+          <p><strong>Source:</strong> GeoData Solutions</p>
+          <button onclick="addToCart('Location Data', 1.00)">Add to Cart</button>
+        </div>
+        <!-- Product 4 -->
+        <div class="card">
+          <h3>Voice Recordings</h3>
+          <p>Samples of voice data from smart assistants for sentiment analysis.</p>
+          <p><strong>Price:</strong> ₹420 per sample</p>
+          <p><strong>Source:</strong> AudioData Corp.</p>
+          <button onclick="addToCart('Voice Recordings', 5.00)">Add to Cart</button>
+        </div>
+        <!-- Product 5 -->
+        <div class="card">
+          <h3>Facial Recognition Data</h3>
+          <p>High-resolution facial data for identity verification and analysis.</p>
+          <p><strong>Price:</strong> ₹840 per profile</p>
+          <p><strong>Source:</strong> FaceTrack Ltd.</p>
+          <button onclick="addToCart('Facial Recognition Data', 10.00)">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+ <!-- Individual Data Section -->
+    <section id="Individual Data Profiles">
+      <h2>Individual Data Profiles</h2>
+      <div class="card-grid">
+        <!-- Product 1 -->
+        <div class="card">
+          <h3>John Doe</h3>
+          <p>Demographics: 32 years old, Male, Income: ₹15 LPA, Location: Mumbai, Maharashtra</p>
+	<p>Browsing History: Frequent searches for stock market updates, cryptocurrency trading, and luxury car brands.</p>
+<p>Location Data: Daily commute logs from Bandra to Nariman Point, recent travel to Dubai.</p>
+          <p><strong>Price:</strong> ₹1,250</p>
+          <p><strong>Source:</strong> Trusted Data Collectors Inc.</p>
+          <button onclick="addToCart('John Doe', 0.20)">Add to Cart</button>
+        </div>
+        <!-- Product 2 -->
+        <div class="card">
+          <h3>John Doe-2</h3>
+          <p>Demographics: 28 years old, Female, Income: ₹9 LPA, Location: Bengaluru, Karnataka</p>
+	<p>Voice Data: Smart assistant recordings discussing fitness, skincare, and investment options.</p>
+	<p>Facial Recognition: High-quality images from Instagram, Aadhaar-linked databases, and CCTV feeds.</p>
+          <p><strong>Price:</strong> ₹1,500</p>
+          <p><strong>Source:</strong> WebTrack Analytics</p>
+          <button onclick="addToCart('John Doe-2', 0.50)">Add to Cart</button>
+        </div>
+        <!-- Product 3 -->
+        <div class="card">
+          <h3>John Doe-3</h3>
+          <p>Demographics: 45 years old, Male, Income: ₹25 LPA, Location: New Delhi</p>
+<p>Browsing Data: Online purchases from premium brands, high-end electronics, and foreign travel bookings.</p>
+<p>Real-Time Location: GPS logs tracking movement between South Delhi and Connaught Place.</p>
+          <p><strong>Price:</strong> ₹1,750</p>
+          <p><strong>Source:</strong> GeoData Solutions</p>
+          <button onclick="addToCart('John Doe-3', 1.00)">Add to Cart</button>
+        </div>
+        <!-- Product 4 -->
+        <div class="card">
+          <h3>John Doe-4</h3>
+          <p>Demographics: 23 years old, Male, Income: ₹6 LPA, Location: Hyderabad, Telangana</p>
+<p>Browsing & Digital Activity: Active on Instagram, Twitter, and gaming platforms.
+</p>
+<p>Voice Data: Mobile call recordings analyzed for sentiment detection and social behavior.</p>
+          <p><strong>Price:</strong> ₹1,450</p>
+          <p><strong>Source:</strong> AudioData Corp.</p>
+          <button onclick="addToCart('John Doe-4', 5.00)">Add to Cart</button>
+        </div>
+        <!-- Product 5 -->
+        <div class="card">
+          <h3>John Doe-5</h3>
+          <p>Demographics: 38 years old, Female, Income: ₹18 LPA, Location: Gurugram, Haryana</p>
+<p>Facial Recognition: AI-enhanced images from corporate security databases and personal social media.</p>
+<p>Location Insights: Frequent business trips between Delhi, Mumbai, and Singapore</p>
+          <p><strong>Price:</strong> ₹1,850</p>
+          <p><strong>Source:</strong> FaceTrack Ltd.</p>
+          <button onclick="addToCart('John Doe-5', 10.00)">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Cart Section -->
+    <section id="cart">
+      <h2>Your Cart</h2>
+      <div id="cartContents">
+        <p>Your cart is empty.</p>
+      </div>
+      <button onclick="checkout()">Checkout</button>
+    </section>
+
+    <!-- Seller Profiles Section -->
+    <section id="sellers">
+      <h2>Seller Profiles</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Trusted Data Collectors Inc.</h3>
+          <p>Specializes in consumer demographic data collected ethically from opt-in sources.</p>
+          <button onclick="alert('Contact: data@tdci.com')">Contact Seller</button>
+        </div>
+        <div class="card">
+          <h3>WebTrack Analytics</h3>
+          <p>Provides detailed browsing histories and online behavior analytics for targeted campaigns.</p>
+          <button onclick="alert('Contact: info@webtrack.com')">Contact Seller</button>
+        </div>
+        <div class="card">
+          <h3>GeoData Solutions</h3>
+          <p>Offers real-time location data with high precision and regular updates.</p>
+          <button onclick="alert('Contact: sales@geodatasol.com')">Contact Seller</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard">
+      <h2>Top Data Providers</h2>
+      <div class="leaderboard">
+        <table>
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Annual Revenue from Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DataCorp</td>
+              <td>150 Crore Rupees</td>
+            </tr>
+            <tr>
+              <td>InfoSource</td>
+              <td>100 Crore Rupees</td>
+            </tr>
+            <tr>
+              <td>WebTrack Analytics</td>
+              <td>75 Crore Rupees</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form onsubmit="sendMessage(event)">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required /><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required /><br><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required></textarea><br><br>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- Cookie Consent Modal -->
+  <div id="cookieModal" class="modal">
+    <div class="modal-content">
+      <p>We use cookies to enhance your experience. Accept or Decline.</p>
+      <button onclick="acceptCookies()">Accept</button>
+      <button onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="modal">
+    <div class="modal-content">
+      <p>Thank you for your purchase! Your data order is being processed.</p>
+      <button onclick="closeCheckoutModal()">Close</button>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 DataBay. All rights reserved.</p>
+<p>Disclaimer:</p>
+<p>
+This website is strictly for educational and research purposes only. All data, products, and listings presented here are entirely fictional and do not represent real individuals, entities, or transactions. We do not support, promote, or engage in any form of illegal data trading, cybercrime, or unethical activities. Any resemblance to real persons, businesses, or organizations is purely coincidental. Unauthorized use of this content for illegal purposes is strictly prohibited.
+
+Stay ethical. Stay informed.</p>
+  </footer>
+
+  <script>
+    // Smooth Scrolling
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Live Transaction Counter Simulation
+    let transactionCounter = document.getElementById('transactionCounter');
+    let transactionValue = 2345678;
+    function updateTransactionCounter() {
+      transactionValue += Math.floor(Math.random() * 500);
+      transactionCounter.textContent = 'Data Transactions Completed: ' + transactionValue.toLocaleString();
+    }
+    setInterval(updateTransactionCounter, 3000);
+
+    // Cookie Consent Modal Functions
+    window.onload = function() {
+      setTimeout(function() {
+        document.getElementById('cookieModal').style.display = 'block';
+      }, 1000);
+    };
+    function acceptCookies() {
+      alert('You accepted cookies. Your browsing experience will be enhanced.');
+      document.getElementById('cookieModal').style.display = 'none';
+    }
+    function declineCookies() {
+      alert('You declined cookies. Some features may not work as intended.');
+      document.getElementById('cookieModal').style.display = 'none';
+    }
+
+    // Cart Functionality
+    let cart = [];
+    function addToCart(product, price) {
+      cart.push({ product, price });
+      updateCartDisplay();
+      alert(product + " added to cart.");
+    }
+    function updateCartDisplay() {
+      const cartContents = document.getElementById('cartContents');
+      if(cart.length === 0) {
+        cartContents.innerHTML = '<p>Your cart is empty.</p>';
+        return;
+      }
+      let html = '<table><tr><th>Product</th><th>Price</th></tr>';
+      cart.forEach(item => {
+        html += `<tr><td>${item.product}</td><td>$${item.price.toFixed(2)}</td></tr>`;
+      });
+      html += '</table>';
+      cartContents.innerHTML = html;
+    }
+    function checkout() {
+      if(cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      document.getElementById('checkoutModal').style.display = 'block';
+      cart = [];
+      updateCartDisplay();
+    }
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').style.display = 'none';
+    }
+
+    // Contact Form Submission (Simulated)
+    function sendMessage(e) {
+      e.preventDefault();
+      alert("Thank you for contacting us! We will get back to you shortly.");
+      document.querySelector('form').reset();
+    }
+  </script>
+</body>
+</html>
